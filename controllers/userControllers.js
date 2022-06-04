@@ -9,7 +9,7 @@ module.exports = {
     },
     // Get a single user
     getSingleUser(req, res) {
-        User.findOne({ _id: req.params.UserId })
+        User.findOne({ _id: req.params.userId })
             .select('-__v')
             .then((userData) => {
                 if (userData) {
@@ -31,7 +31,7 @@ module.exports = {
     // Update a user
     updateUser(req, res) {
         User.findOneAndUpdate(
-            { _id: req.params.UserId },
+            { _id: req.params.userId },
             { $set: req.body },
             { runValidators: true, new: true }
         )
