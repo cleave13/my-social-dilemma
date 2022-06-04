@@ -15,7 +15,7 @@ router.route('/')
 
 // Route endpoint is /api/users/:userId
 router
-    .route('/:UserId')
+    .route('/:userId')
     .get(getSingleUser)
     .put(updateUser)
     .delete(deleteUser);
