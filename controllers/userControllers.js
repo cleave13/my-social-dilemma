@@ -11,6 +11,8 @@ module.exports = {
     getSingleUser(req, res) {
         User.findOne({ _id: req.params.userId })
             .select('-__v')
+            // .populate('friends')
+            // .populate('thoughts')
             .then((userData) => {
                 if (userData) {
                     res.json(userData)
