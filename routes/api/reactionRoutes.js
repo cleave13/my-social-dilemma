@@ -9,6 +9,6 @@ const {
 router.route('/').post(createReaction);
 
 // Route endpoint is /thoughts/:thoughtId/reactions/:reactionId
-router.route('/:ReactionId').delete(deleteReaction);
+router.route('/:reactionId').delete(deleteReaction);
 
 module.exports = router;
