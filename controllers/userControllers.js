@@ -11,9 +11,9 @@ module.exports = {
     getSingleUser(req, res) {
         User.findOne({ _id: req.params.UserId })
             .select('-__v')
-            .then((User) => {
-                if (User) {
-                    res.json(User)
+            .then((userData) => {
+                if (userData) {
+                    res.json(userData)
                 }
                 else { 
                     res.status(404).json({ message: 'No User with that ID' }) 
@@ -25,7 +25,7 @@ module.exports = {
     // Create a new user
     createUser(req, res) {
         User.create(req.body)
-            .then((User) => res.json(User))
+            .then((userData) => res.json(userData))
             .catch((err) => res.status(500).json(err));
     },
     // Update a user
@@ -35,9 +35,9 @@ module.exports = {
             { $set: req.body },
             { runValidators: true, new: true }
         )
-            .then((User) => {
-                if (User) {
-                    res.json(User)
+            .then((userData) => {
+                if (userData) {
+                    res.json(userData)
                 }
                 else {
                     res.status(404).json({ message: 'No User with this id!' })
@@ -49,9 +49,9 @@ module.exports = {
     // Delete a user
     deleteUser(req, res) {
         User.findOneAndDelete({ _id: req.params.userId })
-            .then((User) => {
-                if (User) {
-                    Student.deleteOne({ _id: req.params.userId })
+            .then((userData) => {
+                if (userData) {
+                    User.deleteOne({ _id: req.params.userId })
                 }
                 else {
                     res.status(404).json({ message: 'No user with that ID' })
